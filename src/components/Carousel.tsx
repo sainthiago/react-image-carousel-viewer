@@ -16,6 +16,7 @@ const Carousel = (props: CarouselProps) => {
 
   const [isLoading, setIsLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(startIndex ?? 0);
+  const [dragStart, setDragStart] = useState(0);
 
   const ref = useRef<HTMLImageElement | null>(null);
 
@@ -98,6 +99,15 @@ const Carousel = (props: CarouselProps) => {
                 src={images[currentIndex].src}
                 onLoad={() => {
                   setTimeout(() => setIsLoading(false), 1000);
+                }}
+                onDragStart={(e) => setDragStart(e.clientX)}
+                onDragEnd={(e) => {
+                  if (dragStart > e.clientX) {
+                    scrollToRight();
+                    return;
+                  }
+
+                  scrollToLeft();
                 }}
               />
             </div>
