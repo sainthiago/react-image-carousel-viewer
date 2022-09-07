@@ -8,6 +8,8 @@ import {
 } from "../constants/classNames";
 import { CarouselProps } from "../types/Carousel";
 import LoadingImage from "./LoadingImage";
+import ArrowLeftIcon from "./assets/arrow_left.svg";
+import ArrowRightIcon from "./assets/arrow_right.svg";
 
 const Carousel = (props: CarouselProps) => {
   const { leftArrow, rightArrow, images, startIndex, disableScroll } = props;
@@ -71,7 +73,7 @@ const Carousel = (props: CarouselProps) => {
           <div className={`${ARROW_WRAPPER}`}>
             <img
               className={`${ARROW_ICON}`}
-              src="/assets/arrow_left.svg"
+              src={ArrowLeftIcon}
               alt="Previous"
             />
           </div>
@@ -115,11 +117,7 @@ const Carousel = (props: CarouselProps) => {
           rightArrow
         ) : (
           <div className={`${ARROW_WRAPPER}`}>
-            <img
-              className={`${ARROW_ICON}`}
-              src="/assets/arrow_right.svg"
-              alt="Next"
-            />
+            <img className={`${ARROW_ICON}`} src={ArrowRightIcon} alt="Next" />
           </div>
         )}
       </div>

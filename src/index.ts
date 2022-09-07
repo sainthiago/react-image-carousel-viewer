@@ -1,2 +1,2 @@
-import ReactImageCarouselViewer from "./components/ReactImageCarouselViewer";
-export default ReactImageCarouselViewer;
+export * from "./components";
+export * from "./types";

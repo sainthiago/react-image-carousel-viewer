@@ -2,8 +2,9 @@ import React from "react";
 import { ImageViewerProps } from "../types/ImageViewer";
 import Carousel from "./Carousel";
 import Modal from "./Modal";
+import "../styles/tailwind.css";
 
-const ReactImageCarouselViewer = (props: ImageViewerProps) => {
+export const ReactImageCarouselViewer = (props: ImageViewerProps) => {
   const { open, onClose, images, startIndex } = props;
   return (
     <Modal open={open} onClose={onClose}>
@@ -11,5 +12,3 @@ const ReactImageCarouselViewer = (props: ImageViewerProps) => {
     </Modal>
   );
 };
-
-export default ReactImageCarouselViewer;

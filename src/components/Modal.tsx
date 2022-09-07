@@ -1,6 +1,7 @@
 import React from "react";
 import { useCallback, useEffect } from "react";
 import { ModalProps } from "../types/Modal";
+import CloseIcon from "./assets/close.svg";
 
 const Modal = (props: ModalProps) => {
   const { open, onClose, children, extraTopElement } = props;
@@ -46,7 +47,7 @@ const Modal = (props: ModalProps) => {
               <img
                 onClick={onClose}
                 className="w-6 h-6 md:w-8 md:h-8 cursor-pointer"
-                src="/assets/close.svg"
+                src={CloseIcon}
                 alt="Close"
               />
             </div>
