@@ -100,9 +100,9 @@ const Carousel = (props: CarouselProps) => {
                 onLoad={() => {
                   setTimeout(() => setIsLoading(false), 1000);
                 }}
-                onDragStart={(e) => setDragStart(e.clientX)}
-                onDragEnd={(e) => {
-                  if (dragStart > e.clientX) {
+                onTouchStart={(e) => setDragStart(e.targetTouches[0].clientX)}
+                onTouchEnd={(e) => {
+                  if (dragStart > e.targetTouches[0].clientX) {
                     scrollToRight();
                     return;
                   }
