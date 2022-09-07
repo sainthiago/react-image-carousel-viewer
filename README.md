@@ -69,7 +69,7 @@ export default App;
 
 |   Property   |  Type  |    Description    |
 | :---         |     :---      |          :--- |
-| images   | {src: string; description?: string}[]     | Array that contains image src and optional description.    |
+| images   | {src: string; description?: string; id?: string}[]     | Array that contains image src and optional description.    |
 | startIndex     | number       | First image from the array to display in the viewer.   |
 | open     | boolean       | Trigger to open/close modal.    |
 | onClose    | () => void       | Handle modal closing action.|

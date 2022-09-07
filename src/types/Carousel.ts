@@ -9,4 +9,5 @@ export interface CarouselProps extends React.HTMLAttributes<HTMLDivElement> {
 export interface Image {
   src: string;
   description?: string;
+  id?: string
 }
