@@ -9,7 +9,61 @@ Simple library with Image Carousel Viewer component for React.
 
 ```npm i react-image-carousel-viewer```
 
-## Demo
+## Live Demo
+
+https://codesandbox.io/s/react-image-carousel-viewer-example-1-461uc1
+
+## Example
+
+```javascript
+import { useState } from "react";
+import { ReactImageCarouselViewer } from "react-image-carousel-viewer";
+import "./styles.css";
+
+function App() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [index, setIndex] = useState(0);
+  const images = [
+    {
+      src: "http://placeimg.com/1200/800/nature",
+      description: "image-1"
+    },
+    { src: "http://placeimg.com/800/1200/nature", description: "image-2" },
+    { src: "http://placeimg.com/1920/1080/nature" },
+    { src: "http://placeimg.com/1500/500/nature" }
+  ];
+
+  return (
+    <>
+      <p className="title">react-image-carousel-viewer</p>
+      <div className="container">
+        {images.map((image, index) => (
+          <img
+            className="image"
+            src={image.src}
+            alt=""
+            key={index}
+            onClick={() => {
+              setIndex(index);
+              setIsOpen(true);
+            }}
+          />
+        ))}
+
+        <ReactImageCarouselViewer
+          open={isOpen}
+          onClose={() => setIsOpen(false)}
+          images={images}
+          startIndex={index}
+        />
+      </div>
+    </>
+  );
+}
+
+export default App;
+
+```
 
 ## API
 
@@ -23,4 +77,12 @@ Simple library with Image Carousel Viewer component for React.
 | rightArrow    | JSX.Element      | Custom component for right arrow (optional).      |
 | extraTopElement    | JSX.Element      | Custom component for an element in the modal (optional).     |
 | disableScroll    | boolean    | Trigger for scrolling action (optional).     |
+
+## Keyboard Interactions
+
+ESC - Closes modal
+Scroll - Changes current image
+Left Arrow - Show the previous image
+Right Arrow - Shows the next image
+
 
