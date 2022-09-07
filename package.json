@@ -70,5 +70,8 @@
   "peerDependencies": {
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
+  },
+  "dependencies": {
+    "scss-tokenizer": "^0.4.3"
   }
 }
