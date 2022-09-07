@@ -63,66 +63,72 @@ const Carousel = (props: CarouselProps) => {
   });
 
   return (
-    <div className="flex w-full items-center justify-center h-full relative">
-      <div
-        className={`${
-          currentIndex !== 0 ? "visible" : "invisible"
-        } ${ARROW_PARENT_BASE} left-4 md:left-10`}
-        onClick={scrollToLeft}
-      >
-        {leftArrow ? (
-          leftArrow
-        ) : (
-          <div className={`${ARROW_WRAPPER}`}>
-            <img
-              className={`${ARROW_ICON}`}
-              src={ArrowLeftIcon}
-              alt="Previous"
-            />
-          </div>
+    <>
+      <div className="flex w-full items-center justify-center h-full relative">
+        <div
+          className={`${
+            currentIndex !== 0 ? "visible" : "invisible"
+          } ${ARROW_PARENT_BASE} left-4 md:left-10`}
+          onClick={scrollToLeft}
+        >
+          {leftArrow ? (
+            leftArrow
+          ) : (
+            <div className={`${ARROW_WRAPPER}`}>
+              <img
+                className={`${ARROW_ICON}`}
+                src={ArrowLeftIcon}
+                alt="Previous"
+              />
+            </div>
+          )}
+        </div>
+        {images?.length && (
+          <>
+            <div className={`${!isLoading ? "hidden" : "block"}`}>
+              <Loading />
+            </div>
+            <div
+              className={`${isLoading ? "hidden" : "block"} ${IMAGE_WRAPPER}`}
+            >
+              <img
+                ref={ref}
+                alt="Main"
+                className="w-full max-h-full object-contain absolute top-0 bottom-0 right-0 left-0 lg:py-16"
+                src={images[currentIndex].src}
+                onLoad={() => {
+                  setTimeout(() => setIsLoading(false), 1000);
+                }}
+              />
+            </div>
+          </>
         )}
-      </div>
-      {images?.length && (
-        <>
-          <div className={`${!isLoading ? "hidden" : "block"}`}>
-            <Loading />
-          </div>
-          <div className={`${isLoading ? "hidden" : "block"} ${IMAGE_WRAPPER}`}>
-            <img
-              ref={ref}
-              alt="Main"
-              className="w-full max-h-full object-contain absolute top-1/2 transform -translate-y-1/2 right-0 left-0 bottom-0 md:py-16"
-              src={images[currentIndex].src}
-              onLoad={() => {
-                setTimeout(() => setIsLoading(false), 1000);
-              }}
-            />
-            {images[currentIndex].description ? (
-              <div className="absolute text-gray-200 font-bold text-sm top-44 md:top-auto md:bottom-4 text-center w-full">
-                {images[currentIndex].description}
-              </div>
-            ) : (
-              <></>
-            )}
-          </div>
-        </>
-      )}
 
-      <div
-        className={`${
-          currentIndex < images?.length - 1 ? "visible" : "invisible"
-        } ${ARROW_PARENT_BASE} right-4 md:right-10 `}
-        onClick={scrollToRight}
-      >
-        {rightArrow ? (
-          rightArrow
-        ) : (
-          <div className={`${ARROW_WRAPPER}`}>
-            <img className={`${ARROW_ICON}`} src={ArrowRightIcon} alt="Next" />
-          </div>
-        )}
+        <div
+          className={`${
+            currentIndex < images?.length - 1 ? "visible" : "invisible"
+          } ${ARROW_PARENT_BASE} right-4 md:right-10 `}
+          onClick={scrollToRight}
+        >
+          {rightArrow ? (
+            rightArrow
+          ) : (
+            <div className={`${ARROW_WRAPPER}`}>
+              <img
+                className={`${ARROW_ICON}`}
+                src={ArrowRightIcon}
+                alt="Next"
+              />
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+      {images[currentIndex].description && !isLoading ? (
+        <div className="flex justify-center text-gray-200 font-bold text-sm w-full text-center px-4 lg:-mt-8">
+          {images[currentIndex].description}
+        </div>
+      ) : null}
+    </>
   );
 };
 
