@@ -33,9 +33,12 @@ const Carousel = (props: CarouselProps) => {
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.code === "ArrowLeft") {
+      if (event.code === "ArrowLeft" && currentIndex > 0) {
         scrollToLeft();
-      } else if (event.code === "ArrowRight") {
+      } else if (
+        event.code === "ArrowRight" &&
+        currentIndex !== images.length - 1
+      ) {
         scrollToRight();
       }
     };
@@ -97,7 +100,7 @@ const Carousel = (props: CarouselProps) => {
               }}
             />
             {images[currentIndex].description ? (
-              <div className="absolute text-gray-200 font-bold text-sm top-24 text-center w-full">
+              <div className="absolute text-gray-200 font-bold text-sm top-44 md:top-auto md:bottom-4 text-center w-full">
                 {images[currentIndex].description}
               </div>
             ) : (
