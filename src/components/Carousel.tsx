@@ -97,7 +97,7 @@ const Carousel = (props: CarouselProps) => {
               }}
             />
             {images[currentIndex].description ? (
-              <div className="absolute text-gray-200 font-bold text-sm -bottom-8 md:bottom-4 text-center w-full">
+              <div className="absolute text-gray-200 font-bold text-sm top-24 text-center w-full">
                 {images[currentIndex].description}
               </div>
             ) : (
