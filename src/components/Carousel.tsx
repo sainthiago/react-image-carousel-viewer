@@ -7,7 +7,7 @@ import {
   IMAGE_WRAPPER,
 } from "../constants/classNames";
 import { CarouselProps } from "../types/Carousel";
-import LoadingImage from "./LoadingImage";
+import Loading from "./Loading";
 import ArrowLeftIcon from "./assets/arrow_left.svg";
 import ArrowRightIcon from "./assets/arrow_right.svg";
 
@@ -84,10 +84,8 @@ const Carousel = (props: CarouselProps) => {
       </div>
       {images?.length && (
         <>
-          <div
-            className={`${!isLoading ? "hidden" : "block"} ${IMAGE_WRAPPER}`}
-          >
-            <LoadingImage />
+          <div className={`${!isLoading ? "hidden" : "block"}`}>
+            <Loading />
           </div>
           <div className={`${isLoading ? "hidden" : "block"} ${IMAGE_WRAPPER}`}>
             <img
