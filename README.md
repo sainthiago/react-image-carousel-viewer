@@ -81,8 +81,11 @@ export default App;
 ## Keyboard Interactions
 
 ESC - Closes modal
+
 Scroll - Changes current image
+
 Left Arrow - Show the previous image
+
 Right Arrow - Shows the next image
 
 
