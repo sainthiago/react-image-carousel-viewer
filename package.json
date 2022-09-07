@@ -1,6 +1,6 @@
 {
   "name": "react-image-carousel-viewer",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Simple library with Image Carousel Viewer component for React",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
