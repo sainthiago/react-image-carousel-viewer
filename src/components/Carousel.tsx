@@ -63,6 +63,53 @@ const Carousel = (props: CarouselProps) => {
     };
   });
 
+  useEffect(() => {
+    var xDown: number | null = null;
+    var yDown: number | null = null;
+
+    const getTouches = (evt: TouchEvent) => {
+      return evt.touches;
+    };
+
+    const handleTouchStart = (evt: TouchEvent) => {
+      const firstTouch = getTouches(evt)[0];
+      xDown = firstTouch.clientX;
+      yDown = firstTouch.clientY;
+    };
+
+    const handleTouchMove = (evt: TouchEvent) => {
+      if (!xDown || !yDown) {
+        return;
+      }
+
+      var xUp = evt?.touches[0]?.clientX ?? 0;
+      var yUp = evt?.touches[0]?.clientY ?? 0;
+
+      var xDiff = xDown - xUp;
+      var yDiff = yDown - yUp;
+
+      if (Math.abs(xDiff) > Math.abs(yDiff)) {
+        if (xDiff > 0 && currentIndex !== images.length - 1) {
+          scrollToRight();
+        } else if (currentIndex > 0) {
+          scrollToLeft();
+        }
+      }
+
+      xDown = null;
+      yDown = null;
+    };
+
+    document.addEventListener("touchstart", handleTouchStart);
+    document.addEventListener("touchmove", handleTouchMove);
+    return () => {
+      document.removeEventListener("touchstart", handleTouchStart);
+      if (!disableScroll) {
+        document.removeEventListener("touchmove", handleTouchMove);
+      }
+    };
+  });
+
   return (
     <>
       <div className="flex w-full items-center justify-center h-full relative">
@@ -99,15 +146,6 @@ const Carousel = (props: CarouselProps) => {
                 src={images[currentIndex].src}
                 onLoad={() => {
                   setTimeout(() => setIsLoading(false), 1000);
-                }}
-                onTouchStart={(e) => setDragStart(e.targetTouches[0].clientX)}
-                onTouchEnd={(e) => {
-                  if (dragStart > e.targetTouches[0].clientX) {
-                    scrollToRight();
-                    return;
-                  }
-
-                  scrollToLeft();
                 }}
               />
             </div>
