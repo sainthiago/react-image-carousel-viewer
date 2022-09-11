@@ -148,7 +148,7 @@ const Carousel = (props: CarouselProps) => {
               <img
                 ref={ref}
                 alt="Main"
-                className="w-full max-h-full object-contain absolute top-0 bottom-0 right-0 left-0 lg:py-16"
+                className="w-full max-h-full object-contain absolute top-1/2 transform -translate-y-1/2 md:top-0 md:transform-none bottom-0 right-0 left-0 lg:py-16"
                 src={images[currentIndex].src}
                 onLoad={() => {
                   setTimeout(() => setIsLoading(false), 1000);

@@ -4,4 +4,4 @@ export const ARROW_WRAPPER =
 
 export const ARROW_ICON = "w-4 h-4 md:w-6 md:h-6";
 
-export const IMAGE_WRAPPER = "relative w-5/6 m-auto pt-1/2";
+export const IMAGE_WRAPPER = "relative w-5/6 m-auto pt-96 md:pt-1/2";
