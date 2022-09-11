@@ -75,6 +75,7 @@ export default App;
 | onClose    | () => void       | Handle modal closing action.|
 | leftArrow     | JSX.Element      | Custom component for left arrow (optional).     |
 | rightArrow    | JSX.Element      | Custom component for right arrow (optional).      |
+| loadingElement    | JSX.Element      | Custom component for loading animation (optional).      |
 | extraTopElement    | JSX.Element      | Custom component for an element in the modal (optional).     |
 | disableScroll    | boolean    | Trigger for scrolling action (optional).     |
 

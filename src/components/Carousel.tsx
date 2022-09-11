@@ -12,11 +12,17 @@ import ArrowLeftIcon from "./assets/arrow_left.svg";
 import ArrowRightIcon from "./assets/arrow_right.svg";
 
 const Carousel = (props: CarouselProps) => {
-  const { leftArrow, rightArrow, images, startIndex, disableScroll } = props;
+  const {
+    leftArrow,
+    rightArrow,
+    images,
+    startIndex,
+    disableScroll,
+    loadingElement,
+  } = props;
 
   const [isLoading, setIsLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(startIndex ?? 0);
-  const [dragStart, setDragStart] = useState(0);
 
   const ref = useRef<HTMLImageElement | null>(null);
 
@@ -134,7 +140,7 @@ const Carousel = (props: CarouselProps) => {
         {images?.length && (
           <>
             <div className={`${!isLoading ? "hidden" : "block"}`}>
-              <Loading />
+              {loadingElement ? loadingElement : <Loading />}
             </div>
             <div
               className={`${isLoading ? "hidden" : "block"} ${IMAGE_WRAPPER}`}
@@ -155,7 +161,7 @@ const Carousel = (props: CarouselProps) => {
         <div
           className={`${
             currentIndex < images?.length - 1 ? "visible" : "invisible"
-          } ${ARROW_PARENT_BASE} right-4 md:right-10 `}
+          } ${ARROW_PARENT_BASE} right-4 md:right-10`}
           onClick={scrollToRight}
         >
           {rightArrow ? (
